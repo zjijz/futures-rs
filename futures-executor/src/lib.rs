@@ -7,14 +7,19 @@
 //! All items are only available when the `std` feature of this
 //! library is activated, and it is activated by default.
 //!
-//! # Using a thread pool (M:N task scheduling)
-//!
-//! Most of the time tasks should be executed on a [thread pool](ThreadPool).
-//! A small set of worker threads can handle a very large set of spawned tasks
-//! (which are much lighter weight than threads). Tasks spawned onto the pool
-//! with the [`spawn_ok`](ThreadPool::spawn_ok) function will run ambiently on
-//! the created threads.
-//!
+#![cfg_attr(
+    all(feature = "std", feature = "thread-pool"), 
+    doc = "\
+    # Using a thread pool (M:N task scheduling) \
+    \
+    Most of the time tasks should be executed on a [thread pool](ThreadPool). \
+    A small set of worker threads can handle a very large set of spawned tasks \
+    (which are much lighter weight than threads). Tasks spawned onto the pool \
+    with the [`spawn_ok`](ThreadPool::spawn_ok) function will run ambiently on \
+    the created threads. \
+    \
+    ",
+)]
 //! # Spawning additional tasks
 //!
 //! Tasks can be spawned onto a spawner by calling its [`spawn_obj`] method
@@ -58,16 +63,13 @@ mod local_pool;
 #[cfg(feature = "std")]
 pub use crate::local_pool::{block_on, block_on_stream, BlockingStream, LocalPool, LocalSpawner};
 
-#[cfg(feature = "thread-pool")]
+#[cfg(all(feature = "std", feature = "thread-pool"))]
 #[cfg_attr(docsrs, doc(cfg(feature = "thread-pool")))]
-#[cfg(feature = "std")]
 mod thread_pool;
-#[cfg(feature = "thread-pool")]
-#[cfg(feature = "std")]
+#[cfg(all(feature = "std", feature = "thread-pool"))]
 mod unpark_mutex;
-#[cfg(feature = "thread-pool")]
+#[cfg(all(feature = "std", feature = "thread-pool"))]
 #[cfg_attr(docsrs, doc(cfg(feature = "thread-pool")))]
-#[cfg(feature = "std")]
 pub use crate::thread_pool::{ThreadPool, ThreadPoolBuilder};
 
 #[cfg(feature = "std")]
