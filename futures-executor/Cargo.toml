@@ -1,6 +1,6 @@
 [package]
 name = "futures-executor"
-version = "0.4.0-alpha.0"
+version = "0.3.32"
 edition = "2018"
 rust-version = "1.68"
 license = "MIT OR Apache-2.0"
@@ -16,9 +16,9 @@ std = ["futures-core/std", "futures-task/std", "futures-util/std"]
 thread-pool = ["std"]
 
 [dependencies]
-futures-core = { path = "../futures-core", version = "=1.0.0-alpha.0", default-features = false }
-futures-task = { path = "../futures-task", version = "=0.4.0-alpha.0", default-features = false }
-futures-util = { path = "../futures-util", version = "=0.4.0-alpha.0", default-features = false }
+futures-core = { path = "../futures-core", version = "=0.3.32", default-features = false }
+futures-task = { path = "../futures-task", version = "=0.3.32", default-features = false }
+futures-util = { path = "../futures-util", version = "=0.3.32", default-features = false }
 
 [dev-dependencies]
 futures = { path = "../futures", features = ["thread-pool"] }

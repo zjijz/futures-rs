@@ -1,6 +1,6 @@
 [package]
 name = "futures-channel"
-version = "0.4.0-alpha.0"
+version = "0.3.32"
 edition = "2018"
 rust-version = "1.68"
 license = "MIT OR Apache-2.0"
@@ -17,8 +17,8 @@ alloc = ["futures-core/alloc"]
 sink = ["futures-sink"]
 
 [dependencies]
-futures-core = { path = "../futures-core", version = "=1.0.0-alpha.0", default-features = false }
-futures-sink = { path = "../futures-sink", version = "=0.4.0-alpha.0", default-features = false, optional = true }
+futures-core = { path = "../futures-core", version = "=0.3.32", default-features = false }
+futures-sink = { path = "../futures-sink", version = "=0.3.32", default-features = false, optional = true }
 
 [dev-dependencies]
 futures = { path = "../futures", default-features = true }

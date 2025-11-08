@@ -1,6 +1,6 @@
 [package]
 name = "futures-core"
-version = "1.0.0-alpha.0"
+version = "0.3.32"
 edition = "2018"
 rust-version = "1.36"
 license = "MIT OR Apache-2.0"
